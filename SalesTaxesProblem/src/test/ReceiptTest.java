@@ -10,7 +10,7 @@ public class ReceiptTest {
 	
 	@Test
 	public void getTotals() {
-		Receipt receipt = new Receipt();
+		Receipt receipt = new Receipt("testInput1.txt");
 		assertEquals(0,receipt.calculateTotals(),0);
 	}
 }

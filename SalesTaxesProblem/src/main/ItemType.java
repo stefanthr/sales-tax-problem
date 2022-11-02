@@ -8,7 +8,7 @@ public enum ItemType {
 	IMPORTED_BOOK(true, true),
 	IMPORTED_MEDICAL(true, true), 
 	IMPORTED_FOOD(true, true), 
-	IMPORTED_OTHERS(false, true);
+	IMPORTED_OTHER(false, true);
 
 	private boolean isExempt;
 	private boolean isImported;

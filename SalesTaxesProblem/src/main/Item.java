@@ -9,11 +9,22 @@ public class Item {
 	private int quantity;
 	private ItemType itemType;
 	private double unitPrice;
+	private String name;
+	private double tax;
 
-	public Item(int quantity, ItemType itemType, double price) {
+	public Item(int quantity, ItemType itemType, double price, String name) {
 		this.quantity = quantity;
 		this.itemType = itemType;
 		this.unitPrice = price;
+		this.name = name;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	public ItemType getItemType() {
@@ -21,15 +32,14 @@ public class Item {
 	}
 
 	public double getSubtotal() {
-		DecimalFormat decimalFormat = new DecimalFormat("#.##");
-		double tax = 0;
+		tax = 0;
 		if (getItemType().equals(ItemType.OTHER) || getItemType().equals(ItemType.IMPORTED_OTHER)) {
 			tax += calculateTax(".10").doubleValue();
 		}
 		if (getItemType().isImported()) {
 			tax += calculateTax(".05").doubleValue();
 		}
-		return Double.valueOf(decimalFormat.format((unitPrice + tax) * (double) quantity));
+		return (unitPrice + tax) * (double) quantity;
 	}
 
 	public static BigDecimal round(BigDecimal value, BigDecimal increment, RoundingMode roundingMode) {
@@ -47,5 +57,18 @@ public class Item {
 		BigDecimal salesTaxPercent = new BigDecimal(taxPercent);
 		BigDecimal salesTax = salesTaxPercent.multiply(new BigDecimal(unitPrice));
 		return salesTax = round(salesTax, BigDecimal.valueOf(0.05), RoundingMode.UP);
+	}
+	
+	public double roundTwoDecimals(double d) {
+	    DecimalFormat twoDForm = new DecimalFormat("#.##");
+	    return Double.valueOf(twoDForm.format(d));
+	}
+
+	public String getName() {
+		return name;
+	}
+	
+	public double getTax() {
+		return tax;
 	}
 }

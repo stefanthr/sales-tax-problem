@@ -1,0 +1,22 @@
+To test the code you need to clone my git repository and run the Main.class of the Java Project. 
+
+I worked test driven to solve the sales taxes problem. I started with writing a test which would return me the total value of a receipt.
+This meant that I need to create a Receipt.class. The receipt needs a value variable. The receipt contatins items which make the
+value of it. I created an Item.class. An item has to have a price, quantity, type and name which I included in the class. I decided that I need to test which 
+item types are exempt and imported. I defined two tests in a ItemTypeTest.class which tested the conditions under which
+an item is exempt or imported. Based on these two tests I created an enum for the ItemType which includes the different types of items and if they are imported or exempt. 
+I then started expanding my ReceiptTest.class. I tested the total value of the receipt when there are two items in the receipt and also when one item's quantity is more than one. 
+This means that the receipt needs an ArrayList of items which I then created in the Receipt.class. Based on the quantity of the item I developed a getSubtotal()-
+method in the Item.class which calclualtes the subtotal value of the item based on its quantity. I then wrote a test to calculate total when an item needs to be sale taxed. 
+I updated the getSubtotal()-method in the Item.class to calculate sale tax and add it to the subtotal value of the item. I then wrote a test to check the total value of the receipt
+when there is one imported item in it but is not exempt. I updated my method for calculating sale tax. I made it more general, so that it accept a string parameter with
+the tax percent. This means that I can use the same method to calculate import and sale tax. I wrote another test to check the total when an item is sale and imported taxed. 
+I then updated the getSubtotal()-method as well, so that tax is also included there. I wrote conditons based on which items are taxed for sale or for import. The logic of my code was working, so now I needed to test what happens
+when I input by hand the three items from the first example input. Formatting and rounding needed to be done
+because the end calculations did not always match the expected value of the first input, so I used BigDecimal formatting and rounding as well as DecimalFormat to achieve this.
+
+Now I needed to test building a receipt from an input text file. This meant that I need another constructor for the Receipt class which takes a string value as an input parameter which contains the name of a text file.
+I needed to read the information in this text file. I did that with a scanner which takes a file object as an input. Then I go through the scanner and check for the different parameters which I need for the data of each item in the receipt.
+I create an ArrayList in the beginning of items. This will then be filled with items with their data based on the input text file. The calculation of the receipt was already done with the help of the previous tests, so I built a Main.class
+to create and calculate the three example receipts that were in the task description. 
+ 

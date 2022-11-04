@@ -26,7 +26,7 @@ public class ReceiptTest {
 
 	@Test
 	public void getTotalWithSaleTax() {
-		Receipt receipt = buildReceiptWithItems(new Item(1, ItemType.OTHER, 14.99, "imported laptop"));
+		Receipt receipt = buildReceiptWithItems(new Item(1, ItemType.OTHER, 14.99, "laptop"));
 		assertEquals(16.49, receipt.calculateTotal(), 0);
 	}
 
